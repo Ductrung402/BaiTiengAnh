@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Sở hữu cách 's và '</title>
+    <style>
+        body {
+            font-family: Comic Sans MS, cursive;
+            background: #F2B6E2;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #4a90e2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .rules {
+            background: #f8f9ff;
+            border-left: 5px solid #4a90e2;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .rules h3 {
+            color: #4a90e2;
+            margin-top: 0;
+        }
+        
+        .exercise {
+            margin: 30px 0;
+        }
+        
+        .question {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 15px;
+            border: 2px solid #e1f0ff;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .question-text {
+            flex: 1;
+            font-size: 1.2em;
+            color: #333;
+        }
+        
+        .answer-input {
+            width: 60px;
+            height: 40px;
+            font-size: 1.5em;
+            text-align: center;
+            border: 3px solid #4a90e2;
+            border-radius: 10px;
+            margin: 0 10px;
+            background: white;
+        }
+        
+        .check-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+            font-family: Comic Sans MS, cursive;
+        }
+        
+        .check-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .result {
+            text-align: center;
+            font-size: 1.3em;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        
+        .score {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0;
+            color: #4a90e2;
+        }
+        
+        .reset-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px auto;
+            display: block;
+            font-family: Comic Sans MS, cursive;
+        }
+        
+        .reset-btn:hover {
+            background: #ee5a5a;
+        }
+        
+        .nav-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: Comic Sans MS, cursive;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: #4a90e2;
+            transform: scale(1.05);
+        }
+        
+        .choice-group {
+            margin-top: 10px;
+        }
+        
+        .choice-group label {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .choice-group label:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .choice-group input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .error-word {
+            background: #ffe6e6;
+            color: #d73502;
+            padding: 2px 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .error-word:hover {
+            background: #ffcccc;
+            transform: scale(1.1);
+        }
+        
+        .error-word.corrected {
+            background: #d4edda;
+            color: #155724;
+            text-decoration: none;
+        }
+        
+        .matching-container {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        
+        .matching-left, .matching-right {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .match-item {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .match-item:hover {
+            background: #bbdefb;
+            transform: scale(1.05);
+        }
+        
+        .match-item.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+        }
+        
+        .match-target {
+            background: #f5f5f5;
+            border: 2px dashed #999;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .match-target.drag-over {
+            background: #e8f5e8;
+            border-color: #4caf50;
+            transform: scale(1.05);
+        }
+        
+        .match-target.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .match-target.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Bài tập Sở hữu cách</h1>
+            <p style="font-size: 1.2em; color: #666;">Điền 's hoặc ' vào chỗ trống</p>
+        </div>
+        
+        <!-- Exercise 2: Multiple Choice -->
+        <div class="exercise" id="exercise2" style="display: none;">
+            <h2 style="color: #4a90e2; text-align: center;">🎯 Bài 2: Chọn đáp án đúng</h2>
+            
+            <div class="question">
+                <div class="question-icon">🏠</div>
+                <div class="question-text">
+                    This is _______ house.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q1" value="Sarah's" data-correct="true"> Sarah's</label>
+                        <label><input type="radio" name="q1" value="Sarah'"> Sarah'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐱🐱</div>
+                <div class="question-text">
+                    The _______ tails are fluffy.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q2" value="cats's"> cats's</label>
+                        <label><input type="radio" name="q2" value="cats'" data-correct="true"> cats'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👨‍💼</div>
+                <div class="question-text">
+                    Where is _______ office?
+                    <div class="choice-group">
+                        <label><input type="radio" name="q3" value="Mr. Brown's" data-correct="true"> Mr. Brown's</label>
+                        <label><input type="radio" name="q3" value="Mr. Brown'"> Mr. Brown'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👶👶</div>
+                <div class="question-text">
+                    The _______ toys are colorful.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q4" value="babies's"> babies's</label>
+                        <label><input type="radio" name="q4" value="babies'" data-correct="true"> babies'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🚗</div>
+                <div class="question-text">
+                    _______ car is parked outside.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q5" value="James's" data-correct="true"> James's</label>
+                        <label><input type="radio" name="q5" value="James'"> James'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🌺🌺</div>
+                <div class="question-text">
+                    The _______ petals smell sweet.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q6" value="roses's"> roses's</label>
+                        <label><input type="radio" name="q6" value="roses'" data-correct="true"> roses'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👩‍🍳</div>
+                <div class="question-text">
+                    _______ recipe is delicious.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q7" value="Mom's" data-correct="true"> Mom's</label>
+                        <label><input type="radio" name="q7" value="Mom'"> Mom'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐕🐕</div>
+                <div class="question-text">
+                    All the _______ leashes are red.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q8" value="puppies's"> puppies's</label>
+                        <label><input type="radio" name="q8" value="puppies'" data-correct="true"> puppies'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">📚</div>
+                <div class="question-text">
+                    _______ backpack is heavy.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q9" value="Alex's" data-correct="true"> Alex's</label>
+                        <label><input type="radio" name="q9" value="Alex'"> Alex'</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🧸🧸</div>
+                <div class="question-text">
+                    The _______ eyes are button-like.
+                    <div class="choice-group">
+                        <label><input type="radio" name="q10" value="dolls's"> dolls's</label>
+                        <label><input type="radio" name="q10" value="dolls'" data-correct="true"> dolls'</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercise 3: Error Correction -->
+        <div class="exercise" id="exercise3" style="display: none;">
+            <h2 style="color: #4a90e2; text-align: center;">🔍 Bài 3: Tìm và sửa lỗi sai</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1em;">Nhấp vào từ sai để sửa!</p>
+            
+            <div class="question">
+                <div class="question-icon">🐸</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="frog's" onclick="correctError(this)">frogs'</span> tongue is long.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👧👧</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="girls'" onclick="correctError(this)">girls's</span> dresses are pretty.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🦁</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="lion's" onclick="correctError(this)">lions'</span> mane is golden.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🏫</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="children's" onclick="correctError(this)">childrens'</span> playground is fun.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🎨</div>
+                <div class="question-text">
+                    <span class="error-word" data-correct="Lisa's" onclick="correctError(this)">Lisa'</span> painting is beautiful.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">📖📖</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="stories'" onclick="correctError(this)">stories's</span> endings are happy.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐭</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="mouse's" onclick="correctError(this)">mouses'</span> tail is thin.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👨‍👩‍👧‍👦</div>
+                <div class="question-text">
+                    My <span class="error-word" data-correct="family's" onclick="correctError(this)">familys'</span> vacation was great.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐾🐾</div>
+                <div class="question-text">
+                    The <span class="error-word" data-correct="animals'" onclick="correctError(this)">animals's</span> footprints are everywhere.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">⭐</div>
+                <div class="question-text">
+                    <span class="error-word" data-correct="Ben's" onclick="correctError(this)">Ben'</span> star sticker is shiny.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercise 4: Matching -->
+        <div class="exercise" id="exercise4" style="display: none;">
+            <h2 style="color: #4a90e2; text-align: center;">🎮 Bài 4: Ghép cặp đúng</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1em;">Kéo thả để ghép đúng!</p>
+            
+            <div class="matching-container">
+                <div class="matching-left">
+                    <div class="match-item" draggable="true" data-match="1">🐕 The dog</div>
+                    <div class="match-item" draggable="true" data-match="2">🐱🐱 The cats</div>
+                    <div class="match-item" draggable="true" data-match="3">👦 Peter</div>
+                    <div class="match-item" draggable="true" data-match="4">👧👧 The girls</div>
+                    <div class="match-item" draggable="true" data-match="5">🌳 The tree</div>
+                    <div class="match-item" draggable="true" data-match="6">📚📚 The books</div>
+                    <div class="match-item" draggable="true" data-match="7">🐦 The bird</div>
+                    <div class="match-item" draggable="true" data-match="8">🏠🏠 The houses</div>
+                    <div class="match-item" draggable="true" data-match="9">👨‍🏫 The teacher</div>
+                    <div class="match-item" draggable="true" data-match="10">🦄 The unicorn</div>
+                </div>
+                
+                <div class="matching-right">
+                    <div class="match-target" data-match="1">___ bone is buried</div>
+                    <div class="match-target" data-match="2">___ toys are colorful</div>
+                    <div class="match-target" data-match="3">___ homework is done</div>
+                    <div class="match-target" data-match="4">___ shoes are pink</div>
+                    <div class="match-target" data-match="5">___ leaves are green</div>
+                    <div class="match-target" data-match="6">___ covers are torn</div>
+                    <div class="match-target" data-match="7">___ nest is cozy</div>
+                    <div class="match-target" data-match="8">___ roofs are red</div>
+                    <div class="match-target" data-match="9">___ lesson is fun</div>
+                    <div class="match-target" data-match="10">___ horn is magical</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rules">
+            <h3>📋 Quy tắc nhớ:</h3>
+            <p><strong>Dùng 's</strong> khi danh từ không kết thúc bằng 's' (cat → cat's, boy → boy's)</p>
+            <p><strong>Dùng '</strong> khi danh từ số nhiều kết thúc bằng 's' (cats → cats', boys → boys')</p>
+        </div>
+        
+        <!-- Exercise 1: Fill in the blanks -->
+        <div class="exercise" id="exercise1">
+            <div class="question">
+                <div class="question-icon">🐱</div>
+                <div class="question-text">
+                    The cat<input type="text" class="answer-input" data-answer="'s"> toy is very colorful.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👦</div>
+                <div class="question-text">
+                    The boy<input type="text" class="answer-input" data-answer="'s"> bicycle is red.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐕🐕</div>
+                <div class="question-text">
+                    The dogs<input type="text" class="answer-input" data-answer="'"> bones are buried in the garden.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👧</div>
+                <div class="question-text">
+                    My sister<input type="text" class="answer-input" data-answer="'s"> room is very tidy.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">📖📖</div>
+                <div class="question-text">
+                    The books<input type="text" class="answer-input" data-answer="'"> covers are colorful.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🐦</div>
+                <div class="question-text">
+                    The bird<input type="text" class="answer-input" data-answer="'s"> nest is on the tree.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👨‍👩‍👧‍👦</div>
+                <div class="question-text">
+                    My parents<input type="text" class="answer-input" data-answer="'"> car is blue.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🎒</div>
+                <div class="question-text">
+                    Tom<input type="text" class="answer-input" data-answer="'s"> backpack is heavy.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">🌸🌸</div>
+                <div class="question-text">
+                    The flowers<input type="text" class="answer-input" data-answer="'"> petals are soft.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-icon">👩‍🏫</div>
+                <div class="question-text">
+                    The teacher<input type="text" class="answer-input" data-answer="'s"> desk is organized.
+                </div>
+            </div>
+        </div>
+        
+        <button class="check-btn" onclick="checkAnswers()">🔍 Kiểm tra đáp án</button>
+        
+        <div id="result" class="result" style="display: none;"></div>
+        <div id="score" class="score" style="display: none;"></div>
+        
+        <button class="reset-btn" onclick="resetQuiz()" style="display: none;" id="resetBtn">🔄 Làm lại</button>
+        
+        <!-- Navigation buttons -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="nav-btn active" onclick="showExercise(1)">Bài 1: Điền từ</button>
+            <button class="nav-btn" onclick="showExercise(2)">Bài 2: Chọn đáp án</button>
+            <button class="nav-btn" onclick="showExercise(3)">Bài 3: Sửa lỗi</button>
+            <button class="nav-btn" onclick="showExercise(4)">Bài 4: Ghép câu</button>
+        </div>
+    </div>
+
+    <script>
+        let currentExercise = 1;
+        let scores = {1: 0, 2: 0, 3: 0, 4: 0};
+        
+        function showExercise(num) {
+            // Hide all exercises
+            for(let i = 1; i <= 4; i++) {
+                document.getElementById('exercise' + i).style.display = 'none';
+                document.querySelectorAll('.nav-btn')[i-1].classList.remove('active');
+            }
+            
+            // Show selected exercise
+            document.getElementById('exercise' + num).style.display = 'block';
+            document.querySelectorAll('.nav-btn')[num-1].classList.add('active');
+            currentExercise = num;
+            
+            // Hide results
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('resetBtn').style.display = 'none';
+        }
+        
+        function checkAnswers() {
+            let correct = 0;
+            let total = 0;
+            
+            if (currentExercise === 1) {
+                // Exercise 1: Fill in blanks
+                const inputs = document.querySelectorAll('#exercise1 .answer-input');
+                total = inputs.length;
+                
+                inputs.forEach(input => {
+                    const userAnswer = input.value.trim();
+                    const correctAnswer = input.getAttribute('data-answer');
+                    
+                    if (userAnswer === correctAnswer) {
+                        input.style.backgroundColor = '#d4edda';
+                        input.style.borderColor = '#28a745';
+                        correct++;
+                    } else {
+                        input.style.backgroundColor = '#f8d7da';
+                        input.style.borderColor = '#dc3545';
+                    }
+                });
+            } else if (currentExercise === 2) {
+                // Exercise 2: Multiple choice
+                const questions = document.querySelectorAll('#exercise2 .choice-group');
+                total = questions.length;
+                
+                questions.forEach((question, index) => {
+                    const selectedRadio = question.querySelector('input[type="radio"]:checked');
+                    const correctRadio = question.querySelector('input[data-correct="true"]');
+                    
+                    // Reset colors
+                    question.querySelectorAll('label').forEach(label => {
+                        label.style.backgroundColor = '#f8f9fa';
+                    });
+                    
+                    if (selectedRadio) {
+                        if (selectedRadio.hasAttribute('data-correct')) {
+                            selectedRadio.parentElement.style.backgroundColor = '#d4edda';
+                            correct++;
+                        } else {
+                            selectedRadio.parentElement.style.backgroundColor = '#f8d7da';
+                            correctRadio.parentElement.style.backgroundColor = '#d4edda';
+                        }
+                    } else {
+                        correctRadio.parentElement.style.backgroundColor = '#d4edda';
+                    }
+                });
+            } else if (currentExercise === 3) {
+                // Exercise 3: Error correction
+                const errorWords = document.querySelectorAll('#exercise3 .error-word');
+                total = errorWords.length;
+                correct = document.querySelectorAll('#exercise3 .error-word.corrected').length;
+            } else if (currentExercise === 4) {
+                // Exercise 4: Matching
+                const targets = document.querySelectorAll('#exercise4 .match-target');
+                total = targets.length;
+                correct = document.querySelectorAll('#exercise4 .match-target.correct').length;
+            }
+            
+            scores[currentExercise] = correct;
+            displayResults(correct, total);
+        }
+        
+        function displayResults(correct, total) {
+            const percentage = Math.round((correct/total) * 100);
+            const resultDiv = document.getElementById('result');
+            const scoreDiv = document.getElementById('score');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            scoreDiv.innerHTML = `🎯 Bài ${currentExercise} - Điểm số: ${correct}/${total} (${percentage}%)`;
+            scoreDiv.style.display = 'block';
+            
+            if (percentage >= 80) {
+                resultDiv.innerHTML = '🎉 Xuất sắc! Bạn đã hiểu rất rõ về sở hữu cách!';
+                resultDiv.className = 'result correct';
+            } else if (percentage >= 60) {
+                resultDiv.innerHTML = '👍 Tốt lắm! Hãy luyện tập thêm để hoàn thiện!';
+                resultDiv.className = 'result correct';
+            } else {
+                resultDiv.innerHTML = '💪 Hãy đọc lại quy tắc và thử lần nữa!';
+                resultDiv.className = 'result incorrect';
+            }
+            
+            resultDiv.style.display = 'block';
+            resetBtn.style.display = 'block';
+        }
+        
+        function resetQuiz() {
+            if (currentExercise === 1) {
+                const inputs = document.querySelectorAll('#exercise1 .answer-input');
+                inputs.forEach(input => {
+                    input.value = '';
+                    input.style.backgroundColor = 'white';
+                    input.style.borderColor = '#4a90e2';
+                });
+            } else if (currentExercise === 2) {
+                const radios = document.querySelectorAll('#exercise2 input[type="radio"]');
+                const labels = document.querySelectorAll('#exercise2 label');
+                radios.forEach(radio => radio.checked = false);
+                labels.forEach(label => label.style.backgroundColor = '#f8f9fa');
+            } else if (currentExercise === 3) {
+                const errorWords = document.querySelectorAll('#exercise3 .error-word');
+                errorWords.forEach(word => {
+                    word.classList.remove('corrected');
+                    word.textContent = word.getAttribute('data-original') || word.textContent;
+                });
+            } else if (currentExercise === 4) {
+                // Reset matching exercise
+                const items = document.querySelectorAll('#exercise4 .match-item');
+                const targets = document.querySelectorAll('#exercise4 .match-target');
+                
+                items.forEach(item => {
+                    item.style.display = 'block';
+                    document.querySelector('.matching-left').appendChild(item);
+                });
+                
+                targets.forEach(target => {
+                    target.className = 'match-target';
+                    target.innerHTML = target.getAttribute('data-original') || target.innerHTML;
+                });
+            }
+            
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('resetBtn').style.display = 'none';
+            scores[currentExercise] = 0;
+        }
+        
+        // Error correction function
+        function correctError(element) {
+            if (!element.classList.contains('corrected')) {
+                element.setAttribute('data-original', element.textContent);
+                element.textContent = element.getAttribute('data-correct');
+                element.classList.add('corrected');
+            }
+        }
+        
+        // Drag and drop for matching exercise
+        let draggedElement = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize drag and drop
+            const matchItems = document.querySelectorAll('.match-item');
+            const matchTargets = document.querySelectorAll('.match-target');
+            
+            // Store original target content
+            matchTargets.forEach(target => {
+                target.setAttribute('data-original', target.innerHTML);
+            });
+            
+            matchItems.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedElement = this;
+                    this.classList.add('dragging');
+                });
+                
+                item.addEventListener('dragend', function(e) {
+                    this.classList.remove('dragging');
+                });
+            });
+            
+            matchTargets.forEach(target => {
+                target.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+                
+                target.addEventListener('dragleave', function(e) {
+                    this.classList.remove('drag-over');
+                });
+                
+                target.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    
+                    if (draggedElement) {
+                        const draggedMatch = draggedElement.getAttribute('data-match');
+                        const targetMatch = this.getAttribute('data-match');
+                        
+                        if (draggedMatch === targetMatch) {
+                            // Correct match
+                            this.classList.add('correct');
+                            this.innerHTML = draggedElement.innerHTML + " → " + this.getAttribute('data-original').replace('___', draggedElement.innerHTML.split(' ')[2] + "'s/");
+                            draggedElement.style.display = 'none';
+                            
+                            // Determine correct possessive form
+                            const noun = draggedElement.innerHTML.split(' ')[2];
+                            let possessive;
+                            if (noun.includes('🐱🐱') || noun.includes('👧👧') || noun.includes('📚📚') || noun.includes('🏠🏠')) {
+                                possessive = "'";
+                            } else {
+                                possessive = "'s";
+                            }
+                            
+                            this.innerHTML = draggedElement.innerHTML + " → " + this.getAttribute('data-original').replace('___', noun + possessive);
+                        } else {
+                            // Incorrect match
+                            this.classList.add('incorrect');
+                            setTimeout(() => {
+                                this.classList.remove('incorrect');
+                            }, 1000);
+                        }
+                    }
+                });
+            });
+            
+            // Add focus effects for exercise 1
+            document.querySelectorAll('#exercise1 .answer-input').forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.boxShadow = '0 0 10px rgba(74, 144, 226, 0.5)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
