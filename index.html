@@ -2,32 +2,62 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Chọn bài học</title>
+  <title>Trang chính</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f8ff;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: #4a90e2;
+    }
+    .header img {
+      height: 25px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .header h1 {
+      font-size: 1.5em;
+      color: white;
+      margin: 0;
+    }
+    .content {
       text-align: center;
-      padding: 50px;
+      margin-top: 100px;
     }
     a {
       display: inline-block;
       margin: 20px;
-      padding: 20px 40px;
-      background: #4a90e2;
+      padding: 15px 30px;
+      background-color: #4a90e2;
       color: white;
       text-decoration: none;
       font-size: 1.2em;
       border-radius: 10px;
+      transition: background 0.3s;
     }
     a:hover {
-      background: #357ab8;
+      background-color: #357ab8;
     }
   </style>
 </head>
 <body>
-  <h1>📚 Chọn bài học</h1>
-  <a href="bai1.html">👉 Bài tập 1</a>
-  <a href="bai2.html">👉 Bài tập 2</a>
+
+  <!-- Logo và tiêu đề -->
+  <div class="header">
+    <img src="logo.png" alt="Logo">
+    <h1>Chọn bài học</h1>
+  </div>
+
+  <!-- Nội dung chọn bài -->
+  <div class="content">
+    <a href="Bai1.html">👉 Bài 1: Sở hữu cách</a>
+    <a href="Bai2.html">👉 Bài 2</a>
+  </div>
+
 </body>
 </html>
