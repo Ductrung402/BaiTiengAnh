@@ -63,3 +63,16 @@ body {
 .sound--off {
   text-decoration: line-through;
 }
+.name-text {
+  color: #ff7eb3;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
