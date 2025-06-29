@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Test A/An - Grade 3</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, #fbbf24, transparent),
+                radial-gradient(2px 2px at 40% 70%, #ffffff, transparent),
+                radial-gradient(1px 1px at 90% 40%, #fbbf24, transparent),
+                radial-gradient(1px 1px at 60% 90%, #ffffff, transparent),
+                radial-gradient(2px 2px at 10% 80%, #fbbf24, transparent),
+                radial-gradient(1px 1px at 80% 10%, #ffffff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px, 300px 300px, 150px 150px, 250px 250px, 180px 180px, 220px 220px;
+            animation: sparkle 8s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { 
+                opacity: 0;
+                transform: translateY(0px) rotate(0deg);
+            }
+            10% { 
+                opacity: 1;
+                transform: translateY(-10px) rotate(45deg);
+            }
+            20% { 
+                opacity: 0.8;
+                transform: translateY(-15px) rotate(90deg);
+            }
+            30% { 
+                opacity: 1;
+                transform: translateY(-5px) rotate(135deg);
+            }
+            40% { 
+                opacity: 0.6;
+                transform: translateY(-20px) rotate(180deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateY(-8px) rotate(225deg);
+            }
+            60% { 
+                opacity: 0.7;
+                transform: translateY(-12px) rotate(270deg);
+            }
+            70% { 
+                opacity: 1;
+                transform: translateY(-18px) rotate(315deg);
+            }
+            80% { 
+                opacity: 0.9;
+                transform: translateY(-6px) rotate(360deg);
+            }
+            90% { 
+                opacity: 0.5;
+                transform: translateY(-14px) rotate(405deg);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateY(0px) rotate(450deg);
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #ff6b9d;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #fbbf24, #ffffff, #fbbf24, #ffffff);
+            border-radius: 25px;
+            z-index: -1;
+            animation: containerGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes containerGlow {
+            0% { 
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+                filter: hue-rotate(0deg);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+                filter: hue-rotate(45deg);
+            }
+            100% { 
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+                filter: hue-rotate(0deg);
+            }
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ff6b9d;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .title::before {
+            content: "🌟";
+            position: absolute;
+            left: -50px;
+            top: 0;
+            font-size: 1.5em;
+            animation: starTwinkle 2s infinite;
+        }
+        
+        .title::after {
+            content: "🌟";
+            position: absolute;
+            right: -50px;
+            top: 0;
+            font-size: 1.5em;
+            animation: starTwinkle 2s infinite 0.5s;
+        }
+        
+        @keyframes starTwinkle {
+            0% { 
+                opacity: 1; 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 5px #fbbf24);
+            }
+            25% { 
+                opacity: 0.7; 
+                transform: scale(1.3) rotate(90deg);
+                filter: drop-shadow(0 0 10px #ffffff);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1) rotate(180deg);
+                filter: drop-shadow(0 0 8px #fbbf24);
+            }
+            75% { 
+                opacity: 0.8; 
+                transform: scale(1.4) rotate(270deg);
+                filter: drop-shadow(0 0 12px #ffffff);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotate(360deg);
+                filter: drop-shadow(0 0 5px #fbbf24);
+            }
+        }
+        
+        .exercise {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #c7d2fe;
+            position: relative;
+        }
+        
+        .exercise::before {
+            content: "🎈";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 1.5em;
+        }
+        
+        .exercise-title {
+            font-size: 1.3em;
+            color: #4c1d95;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .question {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b9d;
+            position: relative;
+        }
+        
+        .question::after {
+            content: "🐾";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.3;
+        }
+        
+        .options {
+            margin: 10px 0;
+        }
+        
+        .option {
+            margin: 5px 0;
+            padding: 8px;
+            background: #fef3c7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .option:hover {
+            background: #fde68a;
+            border-color: #f59e0b;
+            transform: translateX(5px);
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            border: 2px solid #c7d2fe;
+            border-radius: 8px;
+            font-size: 1em;
+            width: 60px;
+            text-align: center;
+            background: #fef3c7;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+        
+        .instruction {
+            background: #dcfce7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #86efac;
+            font-weight: bold;
+            color: #166534;
+            position: relative;
+        }
+        
+        .instruction::before {
+            content: "📝";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .decoration {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            opacity: 0.8;
+            position: relative;
+        }
+        
+        .decoration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(251, 191, 36, 0.3) 25%, 
+                rgba(255, 255, 255, 0.5) 50%, 
+                rgba(251, 191, 36, 0.3) 75%, 
+                transparent 100%);
+            animation: shimmer 3s ease-in-out infinite;
+            border-radius: 10px;
+        }
+        
+        @keyframes shimmer {
+            0% { 
+                transform: translate(-50%, -50%) scaleX(0.8);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scaleX(1.2);
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(-50%, -50%) scaleX(0.8);
+                opacity: 0.5;
+            }
+        }
+        
+        .cute-image {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        
+        .answer-key {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #0ea5e9;
+        }
+        
+        .answer-key h3 {
+            color: #0c4a6e;
+            margin-bottom: 15px;
+        }
+        
+        .answer-section {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Happy Warm Up! 🎉</h1>
+        
+        <div class="decoration">🦄 🌺 🎊 🌟 🎈 🌈 🦋 🌸</div>
+        
+        <!-- Exercise 1: Multiple Choice -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 1: Choose the correct answer (A or An) 🎯</div>
+            <div class="instruction">Choose A or An for each word. Remember: Use "An" before vowels (a, e, i, o, u)!</div>
+            
+            <div class="question">
+                1. ___ apple 🍎
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="a"> A</label>
+                    <label class="option"><input type="radio" name="q1" value="an"> An</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                2. ___ elephant 🐘
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="a"> A</label>
+                    <label class="option"><input type="radio" name="q2" value="an"> An</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                3. ___ ice cream 🍦
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="a"> A</label>
+                    <label class="option"><input type="radio" name="q3" value="an"> An</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                4. ___ orange 🍊
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="a"> A</label>
+                    <label class="option"><input type="radio" name="q4" value="an"> An</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                5. ___ umbrella ☂️
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="a"> A</label>
+                    <label class="option"><input type="radio" name="q5" value="an"> An</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="decoration">🌻 🦄 🎀 🌟 🎈</div>
+        
+        <!-- Exercise 2: True or False -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 2: True or False? 🤔</div>
+            <div class="instruction">Look at each sentence. Is it correct? Choose True or False!</div>
+            
+            <div class="question">
+                1. I eat a egg for breakfast. 🥚
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="true"> True</label>
+                    <label class="option"><input type="radio" name="tf1" value="false"> False</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                2. She has an owl as a pet. 🦉
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="true"> True</label>
+                    <label class="option"><input type="radio" name="tf2" value="false"> False</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                3. There is a ant on the table. 🐜
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="true"> True</label>
+                    <label class="option"><input type="radio" name="tf3" value="false"> False</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                4. He bought an umbrella. ☔
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="true"> True</label>
+                    <label class="option"><input type="radio" name="tf4" value="false"> False</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                5. We saw an elephant at the zoo. 🐘
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="true"> True</label>
+                    <label class="option"><input type="radio" name="tf5" value="false"> False</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="decoration">🌺 🦋 🎊 🌈 🎯</div>
+        
+        <!-- Exercise 3: Correct the mistakes -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 3: Find and correct the mistakes! 🔍</div>
+            <div class="instruction">Each sentence has a mistake with A or An. Cross out the wrong word and write the correct one!</div>
+            
+            <div class="question">
+                1. I saw a elephant at the zoo. 🐘<br>
+                Correction: <input type="text" id="correct1" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                2. She ate an banana for lunch. 🍌<br>
+                Correction: <input type="text" id="correct2" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                3. He found a egg in the nest. 🥚<br>
+                Correction: <input type="text" id="correct3" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                4. There is an cat on the roof. 🐱<br>
+                Correction: <input type="text" id="correct4" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                5. We need a umbrella for the rain. 🌧️<br>
+                Correction: <input type="text" id="correct5" placeholder="Write the correct word">
+            </div>
+        </div>
+        
+        <div class="decoration">🌸 🦄 🎀 ⭐ 🌻</div>
+        
+        <!-- Exercise 4: Correct the mistakes -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 4: Find and correct the mistakes! 🔍</div>
+            <div class="instruction">Each sentence has a mistake with A or An. Cross out the wrong word and write the correct one!</div>
+            
+            <div class="question">
+                1. I saw a elephant at the zoo. 🐘<br>
+                Correction: <input type="text" id="correct1" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                2. She ate an banana for lunch. 🍌<br>
+                Correction: <input type="text" id="correct2" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                3. He found a egg in the nest. 🥚<br>
+                Correction: <input type="text" id="correct3" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                4. There is an cat on the roof. 🐱<br>
+                Correction: <input type="text" id="correct4" placeholder="Write the correct word">
+            </div>
+            
+            <div class="question">
+                5. We need a umbrella for the rain. 🌧️<br>
+                Correction: <input type="text" id="correct5" placeholder="Write the correct word">
+            </div>
+        </div>
+        
+        <div class="decoration">🎉 🌟 🦋 🌈 🎊 🌺 🦄 🎈</div>
+        
+        <!-- Teacher Message -->
+        <div style="
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border: 3px solid #ec4899;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.2);
+        ">
+            <div style="
+                font-size: 1.4em;
+                color: #be185d;
+                font-weight: bold;
+                margin-bottom: 15px;
+                font-family: 'Comic Sans MS', cursive;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            ">
+                Hẹn gặp lại các con iu tại Trung tâm cô Triệu Hằng 💖💕💝💗💘💖
+            </div>
+            <div style="font-size: 2em; animation: heartBeat 1.5s ease-in-out infinite;">
+                💕💖💕💖💕
+            </div>
+        </div>
+        
+        <style>
+            @keyframes heartBeat {
+                0% { transform: scale(1); }
+                25% { transform: scale(1.1); }
+                50% { transform: scale(1); }
+                75% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        </style>
+        
+        <!-- Check Answer Button -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button id="checkBtn" style="
+                background: linear-gradient(45deg, #ff6b9d, #c084fc);
+                color: white;
+                font-size: 1.2em;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+                transition: all 0.3s;
+                font-weight: bold;
+            ">
+                🌟 Check My Answers! 🌟
+            </button>
+        </div>
+
+        <!-- Score Display -->
+        <div id="scoreDisplay" style="
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 3px solid #f59e0b;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
+        ">
+            <h3 style="color: #92400e; margin-bottom: 15px; font-size: 1.5em;">🎉 Your Score 🎉</h3>
+            <div id="scoreText" style="font-size: 1.3em; color: #92400e; font-weight: bold; margin: 10px 0;"></div>
+            <div style="margin: 20px 0;">
+                <div style="font-size: 3em;" id="scoreEmoji">🌟</div>
+            </div>
+        </div>
+
+        <!-- Student Info Section -->
+        <div style="
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            border: 3px solid #0ea5e9;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+        ">
+            <h3 style="color: #0c4a6e; text-align: center; margin-bottom: 20px; font-size: 1.4em;">
+                📝 Student Information 📝
+            </h3>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; color: #0c4a6e; font-weight: bold; margin-bottom: 8px;">
+                        👦👧 Student Name (Tên học sinh):
+                    </label>
+                    <input type="text" id="studentName" placeholder="Enter your name..." style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 2px solid #0ea5e9;
+                        border-radius: 10px;
+                        font-size: 1em;
+                        background: white;
+                        box-sizing: border-box;
+                    ">
+                </div>
+                
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; color: #0c4a6e; font-weight: bold; margin-bottom: 8px;">
+                        🏫 Class (Lớp):
+                    </label>
+                    <input type="text" id="studentClass" placeholder="Enter your class..." style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 2px solid #0ea5e9;
+                        border-radius: 10px;
+                        font-size: 1em;
+                        background: white;
+                        box-sizing: border-box;
+                    ">
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <div style="color: #0c4a6e; font-weight: bold;">
+                    📸 Fill in your information and take a screenshot of your score! 📸
+                </div>
+            </div>
+        </div>
+        
+        <div class="decoration">🌟 Great job! You're amazing! 🌟</div>
+    </div>
+
+    <script>
+        document.getElementById('checkBtn').addEventListener('click', function() {
+            let score = 0;
+            let total = 15;
+            let feedback = [];
+            
+            // Exercise 1 - Multiple Choice
+            const ex1Answers = ['an', 'an', 'an', 'an', 'an'];
+            for(let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if(selected && selected.value === ex1Answers[i-1]) {
+                    score++;
+                } else {
+                    feedback.push(`Ex1-Q${i}: Correct answer is "${ex1Answers[i-1]}"`);
+                }
+            }
+            
+            // Exercise 2 - True/False
+            const ex2Answers = ['false', 'true', 'false', 'true', 'true'];
+            for(let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="tf${i}"]:checked`);
+                if(selected && selected.value === ex2Answers[i-1]) {
+                    score++;
+                } else {
+                    feedback.push(`Ex2-Q${i}: Correct answer is "${ex2Answers[i-1]}"`);
+                }
+            }
+            
+            // Exercise 3 - Corrections
+            const ex3Answers = ['an', 'a', 'an', 'a', 'an'];
+            for(let i = 1; i <= 5; i++) {
+                const answer = document.getElementById(`correct${i}`).value.toLowerCase().trim();
+                if(answer === ex3Answers[i-1]) {
+                    score++;
+                } else {
+                    feedback.push(`Ex3-Q${i}: Correct answer is "${ex3Answers[i-1]}"`);
+                }
+            }
+            
+            // Display score
+            const percentage = Math.round((score / 15) * 100);
+            let emoji = '🌟';
+            let message = '';
+            
+            if(percentage >= 90) {
+                emoji = '🏆🌟✨';
+                message = 'Excellent! Outstanding work!';
+            } else if(percentage >= 80) {
+                emoji = '🌟😊👏';
+                message = 'Great job! Well done!';
+            } else if(percentage >= 70) {
+                emoji = '👍😊';
+                message = 'Good work! Keep practicing!';
+            } else if(percentage >= 60) {
+                emoji = '💪😊';
+                message = 'Nice try! You can do better!';
+            } else {
+                emoji = '🌈💝';
+                message = 'Keep learning! Practice makes perfect!';
+            }
+            
+            document.getElementById('scoreText').innerHTML = `
+                <div>Score: ${score}/${total} (${percentage}%)</div>
+                <div style="margin: 10px 0; color: #7c2d12;">${message}</div>
+            `;
+            document.getElementById('scoreEmoji').textContent = emoji;
+            document.getElementById('scoreDisplay').style.display = 'block';
+            
+            // Scroll to score
+            document.getElementById('scoreDisplay').scrollIntoView({behavior: 'smooth'});
+        });
+        
+        // Add hover effect to check button
+        const checkBtn = document.getElementById('checkBtn');
+        checkBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 8px 25px rgba(255, 107, 157, 0.4)';
+        });
+        
+        checkBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = '0 5px 15px rgba(255, 107, 157, 0.3)';
+        });
+    </script>
+</body>
+</html>
